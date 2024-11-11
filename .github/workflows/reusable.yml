@@ -5,16 +5,18 @@ name: Testing workflow
       secret_envs:
         description: if given, it's passed to the environments
         required: false
+
 jobs:
   Test:
-    runs-on: [ubuntu-latest]
+    runs-on: ubuntu-latest
+    steps:
       - name: Set build envs
         run: |
           cat >> "$GITHUB_ENV" << 'EOF'
-          ${{secrets.secret_envs}}
+          ${{ secrets.secret_envs }}
           EOF
+
       - name: Use CHCACHE_PASSWORD secret
         run: echo "Using secret CHCACHE_PASSWORD in re-usable - $CHCACHE_PASSWORD"
-
-
-    
+        env:
+          CHCACHE_PASSWORD: ${{ secrets.CHCACHE_PASSWORD }}
