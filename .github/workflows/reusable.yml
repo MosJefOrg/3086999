@@ -15,8 +15,12 @@ jobs:
           cat >> "$GITHUB_ENV" << 'EOF'
           ${{ secrets.secret_envs }}
           EOF
-
-      - name: Use CHCACHE_PASSWORD secret
-        run: echo "Using secret CHCACHE_PASSWORD in re-usable - $CHCACHE_PASSWORD"
-        env:
-          CHCACHE_PASSWORD: ${{ secrets.CHCACHE_PASSWORD }}
+          
+  Run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set build envs
+        run: |
+          echo "Running..."
+          
+          
