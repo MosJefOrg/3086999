@@ -46,7 +46,6 @@ jobs:
     with:
       run_command: |
           echo $CHCACHE_PASSWORD
-          echo ${{secrets.CHCACHE_PASSWORD}}
     secrets:
       secret_envs: |
         CHCACHE_PASSWORD=${{secrets.CHCACHE_PASSWORD}} 
