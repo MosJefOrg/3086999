@@ -34,13 +34,6 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-
-      # Use the CHCACHE_PASSWORD secret in a script
-      - name: Use CHCACHE_PASSWORD secret
-        run: echo "Using secret CHCACHE_PASSWORD - $CHCACHE_PASSWORD"
-        env:
-          CHCACHE_PASSWORD: ${{ secrets.CHCACHE_PASSWORD }}
-
   FastTest:
     uses: ./.github/workflows/reusable.yml
     secrets:
