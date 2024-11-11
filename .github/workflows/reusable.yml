@@ -1,26 +1,31 @@
 name: Testing workflow
-'on':
+on:
   workflow_call:
     secrets:
       secret_envs:
         description: if given, it's passed to the environments
         required: false
 
+
 jobs:
   Test:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted]
+    env:
+      GITHUB_JOB_OVERRIDDEN: 12345
     steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
       - name: Set build envs
         run: |
           cat >> "$GITHUB_ENV" << 'EOF'
-          ${{ secrets.secret_envs }}
+          CHECK_NAME=name
+          ${{secrets.secret_envs}}
           EOF
-          
-  Run:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set build envs
+      - name: A command
         run: |
-          echo "Running..."
-          
-          
+          ls -la
+          # shellcheck disable=SC2319
+          echo "JOB_EXIT_CODE=$?" >> "$GITHUB_ENV"
+      - name: Run another
+        run: |
+          echo "another"
