@@ -40,3 +40,15 @@ jobs:
         run: echo "Using secret CHCACHE_PASSWORD - $CHCACHE_PASSWORD"
         env:
           CHCACHE_PASSWORD: ${{ secrets.CHCACHE_PASSWORD }}
+
+  FastTest:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      run_command: |
+          echo $CHCACHE_PASSWORD
+          echo ${{secrets.CHCACHE_PASSWORD}}
+    secrets:
+      secret_envs: |
+        CHCACHE_PASSWORD=${{secrets.CHCACHE_PASSWORD}} 
+
+      
