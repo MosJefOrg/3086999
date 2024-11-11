@@ -37,6 +37,6 @@ jobs:
 
       # Use the CHCACHE_PASSWORD secret in a script
       - name: Use CHCACHE_PASSWORD secret
-        run: echo "Using secret CHCACHE_PASSWORD: $CHCACHE_PASSWORD"
+        run: echo "Using secret CHCACHE_PASSWORD - $CHCACHE_PASSWORD"
         env:
           CHCACHE_PASSWORD: ${{ secrets.CHCACHE_PASSWORD }}
