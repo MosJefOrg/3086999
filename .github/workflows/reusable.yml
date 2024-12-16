@@ -5,7 +5,7 @@ on:
       secret_envs:
         description: if given, it's passed to the environments
         required: false
-
+  
 
 jobs:
   Test:
@@ -28,4 +28,4 @@ jobs:
           echo "JOB_EXIT_CODE=$?" >> "$GITHUB_ENV"
       - name: Run another
         run: |
-          echo "another"
+          echo "another one!"
